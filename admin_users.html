@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureHub — User Management</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">SH</div>
+            <div>
+                <div class="brand-name">SecureHub</div>
+                <div class="brand-sub">Employee Portal</div>
+            </div>
+        </div>
+
+        <div class="nav-section-label">Workspace</div>
+
+        <a href="/dashboard" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+            Dashboard
+        </a>
+        <a href="#" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            My Profile
+        </a>
+        <a href="#" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h9"/></svg>
+            Tasks
+        </a>
+        <a href="#" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-8"/></svg>
+            Reports
+        </a>
+
+        <div class="nav-section-label">Administration</div>
+        <a href="/admin/users" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            User Management
+        </a>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-foot">
+            <a href="/logout" class="logout-link">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+                Sign out
+            </a>
+        </div>
+
+    </aside>
+
+    <div class="main">
+
+        <div class="topbar">
+            <div>
+                <div class="topbar-title">User Management</div>
+                <div class="topbar-sub">Manage employee accounts and access levels.</div>
+            </div>
+            <div class="topbar-right">
+                <div class="avatar" style="background:#C6841F;">{{ username[0]|upper }}</div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="notice-banner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                <div>Changes made here affect account access for the entire company. Logged in as <strong>{{ username }}</strong>.</div>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <h2>All employees</h2>
+                </div>
+                <p class="muted-text">2 accounts across 2 roles.</p>
+
+                <hr class="divider">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="person-cell">
+                                    <div class="mini-avatar" style="background:#4C5FD5;">A</div>
+                                    <div>
+                                        <div class="person-name">Alice</div>
+                                        <div class="person-email">alice@securehub.co</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-pill user"><span class="dot"></span>User</span></td>
+                            <td><span class="status-dot"><span></span>Active</span></td>
+                            <td style="text-align:right;">
+                                <button class="btn btn-outline" type="button">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="person-cell">
+                                    <div class="mini-avatar" style="background:#C6841F;">B</div>
+                                    <div>
+                                        <div class="person-name">Bob</div>
+                                        <div class="person-email">bob@securehub.co</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-pill admin"><span class="dot"></span>Administrator</span></td>
+                            <td><span class="status-dot"><span></span>Active</span></td>
+                            <td style="text-align:right;">
+                                <button class="btn btn-outline" type="button">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Administrative user-management functionality</h3>
+                <p class="muted-text">Bulk actions for account provisioning and offboarding.</p>
+                <div class="action-row">
+                    <button class="btn btn-primary" type="button">+ Add employee</button>
+                    <button class="btn btn-outline" type="button">Export directory</button>
+                    <button class="btn btn-danger-outline" type="button">Deactivate account</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

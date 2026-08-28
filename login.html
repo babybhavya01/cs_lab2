@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureHub — Sign in</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="login-shell">
+
+    <div class="login-aside">
+        <div class="login-aside-content">
+            <div class="brand">
+                <div class="brand-mark">SH</div>
+                <div>
+                    <div class="brand-name">SecureHub</div>
+                    <div class="brand-sub">Employee Portal</div>
+                </div>
+            </div>
+
+            <div class="login-tagline">
+                Everyone's <span class="accent-word">work</span>,<br>
+                one clear <span class="accent-word">workspace</span>.
+            </div>
+
+            <div class="login-desc">
+                Schedules, requests, announcements, and team tools —
+                all in a single place your whole company already knows how to use.
+            </div>
+        </div>
+
+        <div class="login-stat-row">
+            <div class="login-stat">
+                <div class="num">128</div>
+                <div class="lbl">Active employees</div>
+            </div>
+            <div class="login-stat">
+                <div class="num">14</div>
+                <div class="lbl">Departments</div>
+            </div>
+            <div class="login-stat">
+                <div class="num">99.9%</div>
+                <div class="lbl">Portal uptime</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-form-side">
+        <div class="login-box">
+
+            <h1>Welcome back</h1>
+            <p class="sub">Sign in with your SecureHub employee account.</p>
+
+            {% if error %}
+            <div class="error-banner">{{ error }}</div>
+            {% endif %}
+
+            <form method="POST" action="/login">
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="e.g. alice" required autofocus>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="login-submit">Sign in</button>
+
+            </form>
+
+            <div class="demo-accounts">
+                <div class="heading">Demo accounts</div>
+                <div class="demo-account-item">
+                    <span>Alice · Employee</span>
+                    <code>alice / alice123</code>
+                </div>
+                <div class="demo-account-item">
+                    <span>Bob · Administrator</span>
+                    <code>bob / bob123</code>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
